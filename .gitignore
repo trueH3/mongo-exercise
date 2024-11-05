@@ -13,3 +13,4 @@ buildNumber.properties
 Database.trace.db
 Database.mv.db
 .idea/
+.DS_Store
