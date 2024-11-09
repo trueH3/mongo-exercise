@@ -2,6 +2,7 @@ package com.example.mongointegration.service;
 
 import lombok.RequiredArgsConstructor;
 import org.bson.Document;
+import org.bson.types.Decimal128;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -26,6 +27,12 @@ public class TransactionService {
         final var update = new Update().inc("customKey", 1);
 
         mongoTemplate.updateFirst(query, update, "Customers");
+
+        final var doc = new Document("_id", new ObjectId())
+                .append("customKey", new Decimal128(1L))
+                .append("productName", "microwave");
+        mongoTemplate.insert(doc, "Products");
+
         final var divisionByZero = 3/0;
         mongoTemplate.updateFirst(query, update, "Customers");
     }
