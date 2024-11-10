@@ -12,6 +12,7 @@ public class Mig1 {
     public void createCustomers (final MongoTemplate mongoTemplate) {
         mongoTemplate.createCollection("Customers");
         mongoTemplate.createCollection("Products");
+        mongoTemplate.createCollection("Transactions");
     }
 
 
@@ -19,5 +20,6 @@ public class Mig1 {
     public void rollbackCreateCustomers (final MongoTemplate mongoTemplate) {
         mongoTemplate.dropCollection("Customers");
         mongoTemplate.dropCollection("Products");
+        mongoTemplate.dropCollection("Transactions");
     }
 }
